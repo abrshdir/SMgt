@@ -1,0 +1,23 @@
+<div class="header">
+  <nav class="navbar">
+    <a *ngIf="isLocationProfile" class="navbar-brand white" routerLink="/home"><i class="fa fa-arrow-circle-o-left"></i> Home</a>
+    <a *ngIf="!isLocationProfile" class="navbar-brand" >Bank SMS</a>
+        <form class="form-inline">
+      <div class="btn-group" dropdown placement="bottom right">
+        <button id="button-alignment" dropdownToggle type="button"
+                class="btn btn-light dropdown-toggle no-caret c-p-b" aria-controls="dropdown-alignment">
+          <i class="fa fa-user"></i>
+        </button>
+        <ul id="dropdown-alignment" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+            role="menu" aria-labelledby="button-alignment">
+          <!-- <li role="menuitem"><a class="dropdown-item" routerLink="/profile" translate="">Profile</a></li> -->
+          <li role="menuitem"><a class="dropdown-item" routerLink="/profile/change-password" translate="">Change Password</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" (click)="logout()" translate="">Logout</a></li>
+
+
+        </ul>
+      </div>
+    </form>
+  </nav>
+</div>

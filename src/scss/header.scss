@@ -1,0 +1,11 @@
+.header{
+    background-color: black;
+    font-size: 14px;
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    .nav{
+        height: 40px !important;
+    }
+}

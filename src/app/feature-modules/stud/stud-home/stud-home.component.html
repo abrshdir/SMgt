@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="main-body">
+  <nav id="sidebar">
+      <div class="sidebar-header">
+        <h4><i class="fa fa-envelope" aria-hidden="true"></i> Short Message Service</h4>
+      </div>
+      <div class="desc">
+          <div class="lis" routerLink="./studList" routerLinkActive="active">
+            <h6>Today's List</h6>
+          </div>
+          <div class="lis" routerLink="./studList" routerLinkActive="active">
+            <h6>Today's List</h6>
+          </div>
+        <!-- <ul>
+          <li class="lis" routerLink="./studList" routerLinkActive="active">
+            <a><i class="fa fa-list" aria-hidden="true"></i>&nbsp; Today's List</a>
+          </li>
+          <li class="lis" routerLink="./ListBydate" routerLinkActive="active">
+            <a><i class="fa fa-list" aria-hidden="true"></i>&nbsp; List By date</a>
+          </li>
+          <li class="lis" routerLink="/homepage">
+            <a><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Go
+              to Home</a>
+          </li>
+        </ul> -->
+      </div>
+  </nav>
+  <div id="content">
+    <div class="main-con">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

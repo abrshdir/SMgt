@@ -1,3 +1,9 @@
+export { ClassesService } from './services/classes.service';
+export { ContactsService } from './services/contacts.service';
 export { GradesService } from './services/grades.service';
+export { ProgramsService } from './services/programs.service';
 export { SectionsService } from './services/sections.service';
+export { StatusesService } from './services/statuses.service';
 export { StudentsService } from './services/students.service';
+export { SubjectsService } from './services/subjects.service';
+export { TeachersService } from './services/teachers.service';

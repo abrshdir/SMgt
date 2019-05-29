@@ -1,5 +1,15 @@
+export { ClassListResponseDTO } from './models/class-list-response-dto';
 export { ResponseDTO } from './models/response-dto';
+export { ClassesRequestDTO } from './models/classes-request-dto';
+export { ContactListResponseDTO } from './models/contact-list-response-dto';
+export { ContactRequestDTO } from './models/contact-request-dto';
 export { DefaultRequestDTO } from './models/default-request-dto';
 export { DefaultListResponseDTO } from './models/default-list-response-dto';
-export { StudentRegistrationRequestDTO } from './models/student-registration-request-dto';
+export { ProgramRequestDTO } from './models/program-request-dto';
+export { ProgramsResponseDTO } from './models/programs-response-dto';
 export { StudentListResponseDTO } from './models/student-list-response-dto';
+export { StudentClassAssociationDTO } from './models/student-class-association-dto';
+export { StudentRegistrationRequestDTO } from './models/student-registration-request-dto';
+export { TeacherListResponseDTO } from './models/teacher-list-response-dto';
+export { TeacherAssignmentDTO } from './models/teacher-assignment-dto';
+export { TeacherRequestDTO } from './models/teacher-request-dto';
