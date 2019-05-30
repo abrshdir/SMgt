@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { StudRoutingModule } from './stud-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { StudHomeComponent } from './stud-home/stud-home.component';
@@ -17,6 +17,7 @@ import { ListByclassComponent } from './list-byclass/list-byclass.component';
     StudRoutingModule,
     SharedModule,
     DataTablesModule.forRoot(),
+    BsDropdownModule.forRoot()
   ]
 })
 export class StudModule { }

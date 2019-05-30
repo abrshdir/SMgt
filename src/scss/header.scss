@@ -1,21 +1,28 @@
 .header{
-    background-color: black;
+    background-color: rgb(80, 73, 72);
     font-size: 14px;
     color: white;
-    position: fixed;
+    position: relative;
     width: 100%;
-    z-index: 1000;
-    .nav{
-        height: 40px !important;
+    z-index: -1;
+    .navbar{
+        width: 50%;
+        float: left;
+    }
+    .navnth{
+        width: 50%;
+        float: left;
     }
 }
 
 
 .header-con{
-    height: 40px;
+    height: 60px;
     width: 100%;
-    background-color: black;
     color: white;
+    padding: 10px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid wheat;
 }
 
 .cont{
@@ -26,9 +33,18 @@
     .ro{
         float: left;
         width: 100%;
+        position: relative;
         .co{
             float: left;
             width: 50%;
+            h6{
+                font-size: 26px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-weight: 800;
+            }
+            button{
+                float: right;
+            }
         }
     }    
 }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stud-home.component.sass']
 })
 export class StudHomeComponent implements OnInit {
-
+  isDropup = true;
   constructor() { }
 
   ngOnInit() {

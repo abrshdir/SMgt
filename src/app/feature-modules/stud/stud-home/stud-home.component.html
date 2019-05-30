@@ -1,33 +1,31 @@
-<app-header></app-header>
-<div class="main-body">
-  <nav id="sidebar">
-      <div class="sidebar-header">
-        <h4><i class="fa fa-envelope" aria-hidden="true"></i> Short Message Service</h4>
-      </div>
-      <div class="desc">
-          <div class="lis" routerLink="./studList" routerLinkActive="active">
-            <h6>Today's List</h6>
-          </div>
-          <div class="lis" routerLink="./studList" routerLinkActive="active">
-            <h6>Today's List</h6>
-          </div>
-        <!-- <ul>
-          <li class="lis" routerLink="./studList" routerLinkActive="active">
-            <a><i class="fa fa-list" aria-hidden="true"></i>&nbsp; Today's List</a>
-          </li>
-          <li class="lis" routerLink="./ListBydate" routerLinkActive="active">
-            <a><i class="fa fa-list" aria-hidden="true"></i>&nbsp; List By date</a>
-          </li>
-          <li class="lis" routerLink="/homepage">
-            <a><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Go
-              to Home</a>
-          </li>
-        </ul> -->
-      </div>
-  </nav>
-  <div id="content">
-    <div class="main-con">
-      <router-outlet></router-outlet>
+<nav id="sidebar">
+  <app-sidebar></app-sidebar>
+  <div class="desc">
+    <div class="lis" routerLink="./studList" routerLinkActive="active">
+      <h6>Student List</h6>
     </div>
+    <div class="lis" routerLink="./listByClass" routerLinkActive="active">
+      <h6>List By class</h6>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="foo">
+      <div class="btn-group" dropdown [dropup]="isDropup">
+        <button id="button-dropup" dropdownToggle type="button" class="btn btn-light dropdown-toggle bbt"
+          aria-controls="dropdown-dropup">
+          <i class="fa fa-user"></i> <span class="caret"></span>
+        </button>
+        <h6>User</h6>
+        <ul id="dropdown-dropup" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-dropup">
+          <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div id="content">
+  <div class="main-con">
+    <router-outlet></router-outlet>
   </div>
 </div>
