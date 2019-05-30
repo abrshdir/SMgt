@@ -9,3 +9,26 @@
         height: 40px !important;
     }
 }
+
+
+.header-con{
+    height: 40px;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.cont{
+    width:100%;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    .ro{
+        float: left;
+        width: 100%;
+        .co{
+            float: left;
+            width: 50%;
+        }
+    }    
+}

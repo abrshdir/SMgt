@@ -11,7 +11,7 @@ html, body{
     width: 100%;
     height: 100%;
     position: fixed;
-    margin-top: 41px;
+    margin-top: 40px;
 }
 
 /* .main-con{
@@ -20,5 +20,15 @@ html, body{
 } */
 #content{
     float:left;
-    width: calc(100%-250px);
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    background-color: blue;
 }
+
+.main-con{
+    padding-left: 20px;
+    width: 100%;
+    padding-right: 20px;
+}
+
