@@ -1,15 +1,41 @@
 <div class="header-con">
-    <div class="cont">
-      <div class="ro">
-        <div class="co">
-          <h6>Student List</h6>
-        </div>
-        <div class="co">
-          <button class="btn btn-success">Register Students</button>
-        </div>
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Student List</h6>
+      </div>
+      <div class="co">
+        <button class="btn btn-success" (click)="registerStu()">Register Students</button>
       </div>
     </div>
+  </div>
 </div>
 <div class="list-con">
-  
+  <div *ngIf="!studList">
+    <h4>Notice: <small>There are no students list currently</small></h4>
+  </div>
+  <div *ngIf="studList">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr *ngFor="let each of studList;let i=index">
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Middle</th>
+          <th scope="col">status</th>
+          <th scope="col">stud Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let each of studList;let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{each.firstName}}</td>
+          <td>{{each.lastName}}</td>
+          <td>{{each.middleName}}</td>
+          <td>{{each.statusId}}</td>
+          <td>{{each.studentId}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

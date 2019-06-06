@@ -1,3 +1,39 @@
-<p>
-  register works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Register</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="register" (ngSubmit)="registerNow()">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div id="main">
+        <div>
+          <label for="role">Select Language</label>
+          <select class="form-control" formControlName="languageId" aria-placeholder="Language">
+            <option *ngFor="let each of AllLanuages;let i=index" [ngValue]="each.id">{{each.language}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="phoneNumber">Phone Number</label>
+          <input formControlName="studentId" placeholder="Phone Number" class="form-control">
+          <small>e.g. +251912121212</small>
+          <div *ngIf="studentId.invalid && (studentId.dirty || studentId.touched)">
+            <small *ngIf="register.hasError('required',['studentId'])" style="color : red !important;"
+                   class="form-text text-muted">this
+              field is required
+            </small>
+            <small *ngIf="register.hasError('pattern',['studentId'])" style="color : red !important;"
+                   class="form-text text-muted">Phone
+              number is not valid yet
+            </small>
+          </div>
+        </div>
+        <br>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-success float-right">Insert</button>
+      <br>
+    </div>
+  </form>
+</div>

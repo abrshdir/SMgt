@@ -17,7 +17,7 @@ import { ListByclassComponent } from './list-byclass/list-byclass.component';
     StudRoutingModule,
     SharedModule,
     DataTablesModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
   ]
 })
 export class StudModule { }

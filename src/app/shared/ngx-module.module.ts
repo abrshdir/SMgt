@@ -18,7 +18,7 @@ import { DataTablesModule } from 'angular-datatables';
     ModalModule.forRoot(),
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    DataTablesModule.forRoot()
+    DataTablesModule.forRoot(),
   ] ,
   exports: [
     BsDropdownModule,
@@ -26,7 +26,7 @@ import { DataTablesModule } from 'angular-datatables';
     BsDatepickerModule,
     PaginationModule,
     ModalModule,
-    TabsModule
+    TabsModule,
   ],
   declarations: []
 })

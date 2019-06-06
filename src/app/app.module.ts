@@ -17,6 +17,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { ToastComponent } from './components/toast/toast.component';
 import { DataTablesModule } from 'angular-datatables';
+import { HomepageComponent } from './feature-modules/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DataTablesModule } from 'angular-datatables';
     UnAthorizedPageComponent,
     ModalComponent,
     ToastComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,

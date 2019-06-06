@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { StudentsService } from 'src/app/api/services';
-import { StudentListResponseDTO } from 'src/app/api/models';
+import {Component, OnInit} from '@angular/core';
+import {StudentsService} from 'src/app/api/services';
+import {StudentListResponseDTO} from 'src/app/api/models';
+import {RegisterComponent} from '../register/register.component';
+import { BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-stud-list',
@@ -12,18 +14,25 @@ export class StudListComponent implements OnInit {
 
   constructor(
     private studentService: StudentsService,
-  ) { }
+    private modalService: BsModalService,
+
+  ) {
+  }
 
   ngOnInit() {
-    const params: StudentsService.ListregisteredStudentsParams={
+    const params: StudentsService.ListregisteredStudentsParams = {
       startPosition: null,
       maxResult: null
     }
     this.studentService.listregisteredStudents(params).subscribe(
-      result=>{
+      result => {
         this.studList = result;
       }
-    )
+    );
+  }
+
+  registerStu() {
+    this.modalService.show(RegisterComponent);
   }
 
 }

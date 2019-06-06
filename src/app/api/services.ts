@@ -1,3 +1,4 @@
+export { AssesmentsService } from './services/assesments.service';
 export { ClassesService } from './services/classes.service';
 export { ContactsService } from './services/contacts.service';
 export { GradesService } from './services/grades.service';

@@ -3,6 +3,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration';
 
+import { AssesmentsService } from './services/assesments.service';
 import { ClassesService } from './services/classes.service';
 import { ContactsService } from './services/contacts.service';
 import { GradesService } from './services/grades.service';
@@ -26,6 +27,7 @@ import { TeachersService } from './services/teachers.service';
   declarations: [],
   providers: [
     ApiConfiguration,
+    AssesmentsService,
     ClassesService,
     ContactsService,
     GradesService,
