@@ -7,101 +7,25 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { ResponseDTO } from '../models/response-dto';
-import { ProgramRequestDTO } from '../models/program-request-dto';
-import { DefaultRequestDTO } from '../models/default-request-dto';
 import { ProgramsResponseDTO } from '../models/programs-response-dto';
+import { ResponseDTO } from '../models/response-dto';
+import { DefaultRequestDTO } from '../models/default-request-dto';
 import { DefaultListResponseDTO } from '../models/default-list-response-dto';
+import { ProgramRequestDTO } from '../models/program-request-dto';
 @Injectable({
   providedIn: 'root',
 })
 class ProgramsService extends __BaseService {
-  static readonly registerProgramPath = '/programs/addProgram';
-  static readonly registerProgramTypesPath = '/programs/addProgramType';
   static readonly listProgramsPath = '/programs/ProgramList';
+  static readonly registerProgramTypesPath = '/programs/addProgramType';
   static readonly listProgramTypesPath = '/programs/ProgramTypeList';
+  static readonly registerProgramPath = '/programs/addProgram';
 
   constructor(
     config: __Configuration,
     http: HttpClient
   ) {
     super(config, http);
-  }
-
-  /**
-   * Register Students
-   * @param body undefined
-   * @return successful operation
-   */
-  registerProgramResponse(body?: ProgramRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = body;
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/programs/addProgram`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<ResponseDTO>;
-      })
-    );
-  }
-  /**
-   * Register Students
-   * @param body undefined
-   * @return successful operation
-   */
-  registerProgram(body?: ProgramRequestDTO): __Observable<ResponseDTO> {
-    return this.registerProgramResponse(body).pipe(
-      __map(_r => _r.body as ResponseDTO)
-    );
-  }
-
-  /**
-   * Register Students
-   * @param body undefined
-   * @return successful operation
-   */
-  registerProgramTypesResponse(body?: DefaultRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = body;
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/programs/addProgramType`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<ResponseDTO>;
-      })
-    );
-  }
-  /**
-   * Register Students
-   * @param body undefined
-   * @return successful operation
-   */
-  registerProgramTypes(body?: DefaultRequestDTO): __Observable<ResponseDTO> {
-    return this.registerProgramTypesResponse(body).pipe(
-      __map(_r => _r.body as ResponseDTO)
-    );
   }
 
   /**
@@ -154,6 +78,44 @@ class ProgramsService extends __BaseService {
   }
 
   /**
+   * Register Students
+   * @param body undefined
+   * @return successful operation
+   */
+  registerProgramTypesResponse(body?: DefaultRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/programs/addProgramType`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<ResponseDTO>;
+      })
+    );
+  }
+  /**
+   * Register Students
+   * @param body undefined
+   * @return successful operation
+   */
+  registerProgramTypes(body?: DefaultRequestDTO): __Observable<ResponseDTO> {
+    return this.registerProgramTypesResponse(body).pipe(
+      __map(_r => _r.body as ResponseDTO)
+    );
+  }
+
+  /**
    * Lists already registered Grades
    * @param params The `ProgramsService.ListProgramTypesParams` containing the following parameters:
    *
@@ -199,6 +161,44 @@ class ProgramsService extends __BaseService {
   listProgramTypes(params: ProgramsService.ListProgramTypesParams): __Observable<Array<DefaultListResponseDTO>> {
     return this.listProgramTypesResponse(params).pipe(
       __map(_r => _r.body as Array<DefaultListResponseDTO>)
+    );
+  }
+
+  /**
+   * Register Students
+   * @param body undefined
+   * @return successful operation
+   */
+  registerProgramResponse(body?: ProgramRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/programs/addProgram`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<ResponseDTO>;
+      })
+    );
+  }
+  /**
+   * Register Students
+   * @param body undefined
+   * @return successful operation
+   */
+  registerProgram(body?: ProgramRequestDTO): __Observable<ResponseDTO> {
+    return this.registerProgramResponse(body).pipe(
+      __map(_r => _r.body as ResponseDTO)
     );
   }
 }

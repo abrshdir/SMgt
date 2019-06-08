@@ -1,39 +1,51 @@
 <div class="header-con">
-    <div class="cont">
-      <div class="ro">
-        <div class="co">
-          <h6>Student List By Class</h6>
-        </div>
-        <div class="co">
-          <button class="btn btn-success">Assign Student</button>
-        </div>
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Student List By Class</h6>
+      </div>
+      <div class="co">
+        <button (click)="assign()" class="btn btn-success">Assign Student</button>
       </div>
     </div>
   </div>
-  <div class="list-con">
-    <div *ngIf="!classIdList">
-      <h4>Notice: <small>There are no students list currently</small></h4>
+</div>
+<div class="list-con">
+  <h5 class="text-light">Select class to display all the students that exists</h5>
+  <br>
+  <div class="border-light">
+  <form class="form-inline" [formGroup]="insertCId" (ngSubmit)="assign()">
+    <h5>List students of Class</h5>
+    <div class="form-group mx-sm-3 mb-2">
+      <select id="inputState" formControlName="classId" class="form-control">
+        <option *ngFor="let each of Classes;let i=index" [ngValue]="each.id">{{each.name}}</option>
+      </select>
     </div>
-    <div *ngIf="classIdList">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Middle</th>
-            <th scope="col">Student ID</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let each of classIdList;let i=index">
-            <th scope="row">{{i+1}}</th>
-            <td>{{each.firstName}}</td>
-            <td>{{each.lastName}}</td>
-            <td>{{each.middleName}}</td>
-            <td>{{each.studentId}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <button type="submit" class="btn btn-primary mb-2">submit</button>
+  </form>
+</div>
+  <br><br>
+  <div *ngIf="!classIdList">
+    <h4>Notice:
+      <small>There are no students list currently</small>
+    </h4>
   </div>
+  <div *ngIf="classIdList">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Student Id</th>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let each of classIdList;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{each.studentId}}</td>
+        <td>{{each.firstName}} {{each.middleName}} {{each.lastName}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

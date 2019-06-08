@@ -5,4 +5,5 @@ export interface StudentRegistrationRequestDTO {
   middleName?: string;
   lastName?: string;
   studentId?: string;
+  classId?: number;
 }

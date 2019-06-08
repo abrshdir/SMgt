@@ -17,23 +17,22 @@
   <div *ngIf="studList">
     <table class="table">
       <thead class="thead-dark">
-        <tr *ngFor="let each of studList;let i=index">
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Middle</th>
+        <tr>
+          <th scope="col">student Id</th>
+          <th scope="col">Name</th>
           <th scope="col">status</th>
-          <th scope="col">stud Id</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let each of studList;let i=index">
-          <th scope="row">{{i+1}}</th>
-          <td>{{each.firstName}}</td>
-          <td>{{each.lastName}}</td>
-          <td>{{each.middleName}}</td>
-          <td>{{each.statusId}}</td>
           <td>{{each.studentId}}</td>
+          <td>{{each.firstName}} {{each.lastName}} {{each.middleName}}</td>
+          <td *ngIf="each.statusId == 0">
+            <ui-switch (change)="activate(i, $event)"></ui-switch>
+          </td>
+          <td *ngIf="each.statusId == 1">
+            <ui-switch checked (change)="activate(i, $event)"></ui-switch>
+          </td>
         </tr>
       </tbody>
     </table>

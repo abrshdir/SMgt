@@ -35,7 +35,7 @@
       <div class="form-group row">
         <label class="col-sm-3 col-form-label text-light" for="middleName">Middle Name</label>
         <div class="col-sm-9">
-          <input class="form-control pl-4" formControlName="middleName" id="middleName" placeholder="middle name"
+          <input class="form-control" formControlName="middleName" id="middleName" placeholder="middle name"
                  type="text">
           <div *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)">-->
             <small *ngIf="register.hasError('required',['middleName'])" class="form-text text-muted"
@@ -47,7 +47,7 @@
       </div>
       <br>
       <div class="form-group row">
-        <label class="col-sm-3 col-form-label text-light" for="studentId"> Id</label>
+        <label class="col-sm-3 col-form-label text-light" for="studentId">Student Id</label>
         <div class="col-sm-9">
           <input class="form-control" formControlName="studentId" id="studentId" placeholder="ID" type="text">
           <div *ngIf="studentId.invalid && (studentId.dirty || studentId.touched)">-->
