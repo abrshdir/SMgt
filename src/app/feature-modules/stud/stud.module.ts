@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
 import { AssignClassComponent } from './assign-class/assign-class.component';
 import { ListByclassComponent } from './list-byclass/list-byclass.component';
+import {UiSwitchModule} from 'ngx-ui-switch';
 
 @NgModule({
   declarations: [RegisterComponent, StudHomeComponent, StudListComponent, AssignClassComponent, ListByclassComponent],
@@ -18,6 +19,7 @@ import { ListByclassComponent } from './list-byclass/list-byclass.component';
     SharedModule,
     DataTablesModule.forRoot(),
     BsDropdownModule.forRoot(),
+    UiSwitchModule
   ]
 })
 export class StudModule { }

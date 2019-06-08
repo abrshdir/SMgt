@@ -1,39 +1,76 @@
-<div class="modal-header">
-  <h4 class="modal-title pull-left">Register</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <form [formGroup]="register" (ngSubmit)="registerNow()">
-    <div fxLayout="row" fxLayoutAlign="center center">
-      <div id="main">
-        <div>
-          <label for="role">Select Language</label>
-          <select class="form-control" formControlName="languageId" aria-placeholder="Language">
-            <option *ngFor="let each of AllLanuages;let i=index" [ngValue]="each.id">{{each.language}}</option>
-          </select>
-        </div>
-        <div>
-          <label for="phoneNumber">Phone Number</label>
-          <input formControlName="studentId" placeholder="Phone Number" class="form-control">
-          <small>e.g. +251912121212</small>
-          <div *ngIf="studentId.invalid && (studentId.dirty || studentId.touched)">
-            <small *ngIf="register.hasError('required',['studentId'])" style="color : red !important;"
-                   class="form-text text-muted">this
+<div class="modalme">
+  <div class="modal-header">
+    <h5>Register</h5>
+  </div>
+  <div class="modal-body">
+
+    <form (ngSubmit)="registerNow()" [formGroup]="register">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="firstName">First Name</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="firstName" id="firstName" placeholder="first name" type="text">
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">-->
+            <small *ngIf="register.hasError('required',['firstName'])" class="form-text text-muted"
+                   style="color : red !important;">this
               field is required
-            </small>
-            <small *ngIf="register.hasError('pattern',['studentId'])" style="color : red !important;"
-                   class="form-text text-muted">Phone
-              number is not valid yet
             </small>
           </div>
         </div>
-        <br>
       </div>
-      <hr>
-      <button type="submit" class="btn btn-success float-right">Insert</button>
       <br>
-    </div>
-  </form>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="lastName">Last Name</label>
+        <div class="col-sm-9">
+          <input class="form-control " formControlName="lastName" id="lastName" placeholder="last name" type="text">
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">-->
+            <small *ngIf="register.hasError('required',['lastName'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="middleName">Middle Name</label>
+        <div class="col-sm-9">
+          <input class="form-control pl-4" formControlName="middleName" id="middleName" placeholder="middle name"
+                 type="text">
+          <div *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)">-->
+            <small *ngIf="register.hasError('required',['middleName'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="studentId"> Id</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="studentId" id="studentId" placeholder="ID" type="text">
+          <div *ngIf="studentId.invalid && (studentId.dirty || studentId.touched)">-->
+            <small *ngIf="register.hasError('required',['studentId'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <td>
+        <label>Activate</label>
+        <ui-switch (change)="activate($event)" checkedLabel="Activated"
+                   class="pl-5"
+                   id="status" size="large" uncheckedLabel="Deactivated"></ui-switch>
+      </td>
+      <br>
+      <div class="submit">
+        <button class="btn btn-success float-right" type="submit">Register</button>
+      </div>
+    </form>
+
+  </div>
 </div>
+

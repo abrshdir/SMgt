@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {StudentsService} from '../../../api/services/students.service';
-import {ToasterService} from '../../../../../../BunaFrontEnd/src/app/services/toaster.service';
+import {ToasterService} from '../../../services/toaster.service';
+
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,7 @@ import {ToasterService} from '../../../../../../BunaFrontEnd/src/app/services/to
 export class RegisterComponent implements OnInit {
 
   register: FormGroup;
+  statusNum: number;
 
   constructor(
     private bsModalService: BsModalService,
@@ -55,6 +57,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerNow() {
+    this.register.patchValue({status: this.statusNum});
     this.studentsService.registerStudents(this.register.value).subscribe(
       result => {
         if (result.status) {
@@ -63,5 +66,13 @@ export class RegisterComponent implements OnInit {
         }
       }
     );
+  }
+
+  activate($event) {
+    if ($event) {
+      this.statusNum = 1;
+    } else {
+      this.statusNum = 0;
+    }
   }
 }

@@ -8,6 +8,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { DataTablesModule } from 'angular-datatables';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { DataTablesModule } from 'angular-datatables';
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     DataTablesModule.forRoot(),
+    UiSwitchModule
   ] ,
   exports: [
     BsDropdownModule,

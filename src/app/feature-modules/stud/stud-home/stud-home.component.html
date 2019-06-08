@@ -1,6 +1,18 @@
 <nav id="sidebar">
   <app-sidebar></app-sidebar>
-
+  <div class="desc">
+    <div class="lis">
+      <div class="lis" routerLink="./studList" routerLinkActive="active">
+        <h6>Student List</h6>
+      </div>
+      <div class="lis" routerLink="./listByClass" routerLinkActive="active">
+        <h6>List By class</h6>
+      </div>
+      <div class="lis" routerLink="./homepage" routerLinkActive="active">
+        <h6><i class="fas fa-arrow-left"></i>Go to Homepage</h6>
+      </div>
+    </div>
+  </div>
   <div class="footer">
     <div class="foo">
       <div class="btn-group" dropdown [dropup]="isDropup">
