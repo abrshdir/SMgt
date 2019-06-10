@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ClassesService, StudentsService} from 'src/app/api/services';
 import {ClassListResponseDTO, StudentListResponseDTO} from 'src/app/api/models';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {AssignClassComponent} from '../assign-class/assign-class.component';
+import {BsModalService} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-list-byclass',
@@ -12,12 +14,12 @@ export class ListByclassComponent implements OnInit {
   classIdList: StudentListResponseDTO[];
   insertCId: FormGroup;
   Classes: ClassListResponseDTO[];
-  classID: any;
 
   constructor(
     private studentService: StudentsService,
     private formBuilder: FormBuilder,
-    private classesService: ClassesService
+    private classesService: ClassesService,
+    private  modalService: BsModalService
   ) {
   }
 
@@ -38,17 +40,29 @@ export class ListByclassComponent implements OnInit {
       result => {
         this.Classes = result;
       }
-    )
+    );
   }
 
-  assign() {
+  submit() {
     if (this.insertCId.valid) {
       this.studentService.listByClass(this.insertCId.value.classId).subscribe(
         result => {
           this.classIdList = result;
         }
-      )
+      );
     }
+  }
+
+  assign(i: number) {
+    const initialState = {
+      item: this.classIdList[i]
+    };
+    this.modalService.show(AssignClassComponent, {initialState});
+    this.modalService.onHide.subscribe(
+      result => {
+        this.ngOnInit();
+      }
+    );
   }
 
 }

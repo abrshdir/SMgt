@@ -12,12 +12,12 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ModalComponent } from './components/modal/modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { ToastComponent } from './components/toast/toast.component';
 import { DataTablesModule } from 'angular-datatables';
 import { HomepageComponent } from './feature-modules/homepage/homepage.component';
+import {ModalComponent} from 'src/app/components/modal/modal.component';
 
 
 @NgModule({
@@ -25,9 +25,9 @@ import { HomepageComponent } from './feature-modules/homepage/homepage.component
     AppComponent,
     PageNotFoundComponentComponent,
     UnAthorizedPageComponent,
-    ModalComponent,
     ToastComponent,
     HomepageComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +41,10 @@ import { HomepageComponent } from './feature-modules/homepage/homepage.component
     ToastrModule.forRoot(),
     DataTablesModule.forRoot(),
   ],
+
+  entryComponents: [
+    ModalComponent],
+
   providers: [],
   bootstrap: [AppComponent]
 })

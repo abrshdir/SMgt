@@ -7,15 +7,15 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
+import { ClassListResponseDTO } from '../models/class-list-response-dto';
 import { ResponseDTO } from '../models/response-dto';
 import { ClassesRequestDTO } from '../models/classes-request-dto';
-import { ClassListResponseDTO } from '../models/class-list-response-dto';
 @Injectable({
   providedIn: 'root',
 })
 class ClassesService extends __BaseService {
-  static readonly registerClassPath = '/classes/add';
   static readonly classesListPath = '/classes/list';
+  static readonly registerClassPath = '/classes/add';
   static readonly classesListByTeacherIdPath = '/classes/listByTeacherId';
 
   constructor(
@@ -23,44 +23,6 @@ class ClassesService extends __BaseService {
     http: HttpClient
   ) {
     super(config, http);
-  }
-
-  /**
-   * Register Classes
-   * @param body undefined
-   * @return successful operation
-   */
-  registerClassResponse(body?: ClassesRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = body;
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/classes/add`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<ResponseDTO>;
-      })
-    );
-  }
-  /**
-   * Register Classes
-   * @param body undefined
-   * @return successful operation
-   */
-  registerClass(body?: ClassesRequestDTO): __Observable<ResponseDTO> {
-    return this.registerClassResponse(body).pipe(
-      __map(_r => _r.body as ResponseDTO)
-    );
   }
 
   /**
@@ -109,6 +71,44 @@ class ClassesService extends __BaseService {
   classesList(params: ClassesService.ClassesListParams): __Observable<Array<ClassListResponseDTO>> {
     return this.classesListResponse(params).pipe(
       __map(_r => _r.body as Array<ClassListResponseDTO>)
+    );
+  }
+
+  /**
+   * Register Classes
+   * @param body undefined
+   * @return successful operation
+   */
+  registerClassResponse(body?: ClassesRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/classes/add`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<ResponseDTO>;
+      })
+    );
+  }
+  /**
+   * Register Classes
+   * @param body undefined
+   * @return successful operation
+   */
+  registerClass(body?: ClassesRequestDTO): __Observable<ResponseDTO> {
+    return this.registerClassResponse(body).pipe(
+      __map(_r => _r.body as ResponseDTO)
     );
   }
 

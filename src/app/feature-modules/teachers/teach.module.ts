@@ -9,9 +9,11 @@ import { ListComponent } from './list/list.component';
 import { TeachHomeComponent } from './teach-home/teach-home.component';
 import { RegTeachComponent } from './reg-teach/reg-teach.component';
 import { UiSwitchModule } from 'ngx-ui-switch';
+import {ListByClassComponent} from './list-by-class/list-by-class.component';
+import { AssignClassComponent } from './assign-class/assign-class.component';
 
 @NgModule({
-  declarations: [ListComponent, TeachHomeComponent, RegTeachComponent],
+  declarations: [ListComponent, TeachHomeComponent, RegTeachComponent, ListByClassComponent, AssignClassComponent],
   imports: [
     CommonModule,
     TeachRoutingModule,

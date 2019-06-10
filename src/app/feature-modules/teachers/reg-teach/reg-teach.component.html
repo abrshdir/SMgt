@@ -1,4 +1,4 @@
-<div class="modalme">
+<div class="modal-me">
   <div class="modal-header">
     <h5>Register</h5>
   </div>
@@ -49,7 +49,7 @@
       <div class="form-group row">
         <label class="col-sm-3 col-form-label text-light" for="phoneNumber">Phone Number 1</label>
         <div class="col-sm-9">
-          <input class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="ID" type="text">
+          <input class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="phoneNumber 1" type="text">
           <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">-->
             <small *ngIf="register.hasError('required',['phoneNumber'])" class="form-text text-muted"
                    style="color : red !important;">this
@@ -60,22 +60,16 @@
       </div>
       <br>
       <div class="form-group row">
-        <label class="col-sm-3 col-form-label text-light" for="phoneNumber2">Phone Number 2</label>
+        <label class="col-sm-3 col-form-label text-light" for="phoneNumber2">Phone Number 2 *</label>
         <div class="col-sm-9">
-          <input class="form-control" formControlName="phoneNumber2" id="phoneNumber2" placeholder="ID" type="text">
-          <div *ngIf="phoneNumber2.invalid && (phoneNumber2.dirty || phoneNumber2.touched)">-->
-            <small *ngIf="register.hasError('required',['phoneNumber2'])" class="form-text text-muted"
-                   style="color : red !important;">this
-              field is required
-            </small>
-          </div>
+          <input class="form-control" formControlName="phoneNumber2" id="phoneNumber2" placeholder="phoneNumber 2" type="text">
         </div>
       </div>
       <br>
       <div class="form-group row">
         <label class="col-sm-3 col-form-label text-light" for="email">Email</label>
         <div class="col-sm-9">
-          <input class="form-control" formControlName="email" id="email" placeholder="ID" type="text">
+          <input class="form-control" formControlName="email" id="email" placeholder="email" type="text">
           <div *ngIf="email.invalid && (email.dirty || email.touched)">-->
             <small *ngIf="register.hasError('required',['email'])" class="form-text text-muted"
                    style="color : red !important;">this
@@ -91,6 +85,19 @@
           <input class="form-control" formControlName="qualification" id="qualification" placeholder="ID" type="text">
           <div *ngIf="qualification.invalid && (qualification.dirty || qualification.touched)">-->
             <small *ngIf="register.hasError('required',['qualification'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="statusName">Status</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="statusName" id="statusName" placeholder="ID" type="text">
+          <div *ngIf="statusName.invalid && (statusName.dirty || statusName.touched)">-->
+            <small *ngIf="register.hasError('required',['statusName'])" class="form-text text-muted"
                    style="color : red !important;">this
               field is required
             </small>

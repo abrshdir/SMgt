@@ -5,7 +5,6 @@
         <h6>Student List By Class</h6>
       </div>
       <div class="co">
-        <button (click)="assign()" class="btn btn-success">Assign Student</button>
       </div>
     </div>
   </div>
@@ -14,7 +13,7 @@
   <h5 class="text-light">Select class to display all the students that exists</h5>
   <br>
   <div class="border-light">
-  <form class="form-inline" [formGroup]="insertCId" (ngSubmit)="assign()">
+  <form class="form-inline" [formGroup]="insertCId" (ngSubmit)="submit()">
     <h5>List students of Class</h5>
     <div class="form-group mx-sm-3 mb-2">
       <select id="inputState" formControlName="classId" class="form-control">
@@ -37,6 +36,7 @@
         <th>#</th>
         <th>Student Id</th>
         <th>Name</th>
+        <th>Assign to another Class</th>
       </tr>
       </thead>
       <tbody>
@@ -44,6 +44,7 @@
         <td>{{i+1}}</td>
         <td>{{each.studentId}}</td>
         <td>{{each.firstName}} {{each.middleName}} {{each.lastName}}</td>
+        <td><button class="btn btn-warning" (click)="assign(i)">Assign</button></td>
       </tr>
       </tbody>
     </table>

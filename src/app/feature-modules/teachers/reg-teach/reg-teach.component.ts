@@ -56,7 +56,7 @@ export class RegTeachComponent implements OnInit {
   get statusName() {
     return this.register.get('statusName');
   }
-  
+
 
   ngOnInit() {
     this.register = this.formBuilder.group({
@@ -73,20 +73,19 @@ export class RegTeachComponent implements OnInit {
   }
   openModal(title: string, message: string) {
     const initialState = {
-      title: title,
-      message: message,
+      title,
+      message,
     };
     this.bsModalService.show(ModalComponent, {initialState});
   }
   registerNow() {
-    this.register.patchValue({status: this.statusNum});
+    this.register.patchValue({statusId: this.statusNum});
     this.teachersService.registerStudents(this.register.value).subscribe(
       result => {
         if (result.status) {
-          this.toasterService.opensuccessToaster(result.message, 'successfully inserted')
+          this.toasterService.opensuccessToaster(result.message, 'successfully inserted');
           this.bsModalRef.hide();
-        }
-        else{
+        } else {
           this.openModal('Failure', result.message);
         }
       }

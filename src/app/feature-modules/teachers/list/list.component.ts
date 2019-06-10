@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
       result => {
         this.listTeachers = result
       }
-    )
+    );
   }
 
   regTeach(){

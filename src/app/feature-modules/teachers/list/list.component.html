@@ -12,27 +12,30 @@
 </div>
 <div class="list-con">
   <div *ngIf="!listTeachers">
-    <h4>Notice: <small>There are no students list currently</small></h4>
+    <h4>Notice: <small>There are no teachers list currently</small></h4>
   </div>
   <div *ngIf="listTeachers">
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">student Id</th>
+          <th scope="col">#</th>
           <th scope="col">Name</th>
+          <th scope="col">Phone number</th>
+          <th scope="col">Phone Number 2</th>
+          <th scope="col">email</th>
+          <th scope="col">qualification</th>
           <th scope="col">status</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let each of listTeachers;let i=index">
-          <td>{{each.studentId}}</td>
+          <td>{{i+1}}</td>
           <td>{{each.firstName}} {{each.lastName}} {{each.middleName}}</td>
-          <td *ngIf="each.statusId == 0">
-            <ui-switch (change)="activate(i, $event)"></ui-switch>
-          </td>
-          <td *ngIf="each.statusId == 1">
-            <ui-switch checked (change)="activate(i, $event)"></ui-switch>
-          </td>
+          <td>{{each.phoneNumber}}</td>
+          <td>{{each.phoneNumber2}}</td>
+          <td>{{each.email}}</td>
+          <td>{{each.qualification}}</td>
+          <td>{{each.statusName}}</td>
         </tr>
       </tbody>
     </table>

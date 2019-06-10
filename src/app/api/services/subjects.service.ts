@@ -7,59 +7,21 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
+import { DefaultListResponseDTO } from '../models/default-list-response-dto';
 import { ResponseDTO } from '../models/response-dto';
 import { DefaultRequestDTO } from '../models/default-request-dto';
-import { DefaultListResponseDTO } from '../models/default-list-response-dto';
 @Injectable({
   providedIn: 'root',
 })
 class SubjectsService extends __BaseService {
-  static readonly registerStudentsPath = '/subjects/add';
   static readonly listGradesPath = '/subjects/list';
+  static readonly registerStudentsPath = '/subjects/add';
 
   constructor(
     config: __Configuration,
     http: HttpClient
   ) {
     super(config, http);
-  }
-
-  /**
-   * Register Students
-   * @param body undefined
-   * @return successful operation
-   */
-  registerStudentsResponse(body?: DefaultRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = body;
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/subjects/add`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<ResponseDTO>;
-      })
-    );
-  }
-  /**
-   * Register Students
-   * @param body undefined
-   * @return successful operation
-   */
-  registerStudents(body?: DefaultRequestDTO): __Observable<ResponseDTO> {
-    return this.registerStudentsResponse(body).pipe(
-      __map(_r => _r.body as ResponseDTO)
-    );
   }
 
   /**
@@ -108,6 +70,44 @@ class SubjectsService extends __BaseService {
   listGrades(params: SubjectsService.ListGradesParams): __Observable<Array<DefaultListResponseDTO>> {
     return this.listGradesResponse(params).pipe(
       __map(_r => _r.body as Array<DefaultListResponseDTO>)
+    );
+  }
+
+  /**
+   * Register Students
+   * @param body undefined
+   * @return successful operation
+   */
+  registerStudentsResponse(body?: DefaultRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/subjects/add`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<ResponseDTO>;
+      })
+    );
+  }
+  /**
+   * Register Students
+   * @param body undefined
+   * @return successful operation
+   */
+  registerStudents(body?: DefaultRequestDTO): __Observable<ResponseDTO> {
+    return this.registerStudentsResponse(body).pipe(
+      __map(_r => _r.body as ResponseDTO)
     );
   }
 }

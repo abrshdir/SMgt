@@ -6,11 +6,28 @@
 
     <form (ngSubmit)="edit()" [formGroup]="editForm">
       <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="subjectId">Subject</label>
+        <div class="col-sm-9">
+          <select id="subjectId" formControlName="subjectId" class="form-control">
+            <option *ngFor="let each of subjects;let i=index" [ngValue]="each.id">{{each.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group row">
         <label class="col-sm-3 col-form-label text-light" for="classId">Class</label>
         <div class="col-sm-9">
           <select id="classId" formControlName="classId" class="form-control">
             <option *ngFor="let each of classes;let i=index" [ngValue]="each.id">{{each.name}}</option>
           </select>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="year">Year</label>
+        <div class="col-sm-9">
+          <input id="year" type="date" formControlName="year" class="form-control">
         </div>
       </div>
       <br>

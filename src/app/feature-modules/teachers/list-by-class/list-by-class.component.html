@@ -1,0 +1,65 @@
+<div class="header-con">
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Teacher's List By Class</h6>
+      </div>
+      <div class="co">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="list-con">
+  <h5 class="text-light">Select class to display all the teachers that exists</h5>
+  <br>
+  <div class="border-light">
+    <form class="form-inline" [formGroup]="insertCId" (ngSubmit)="list()">
+      <h5>List teachers of Class</h5>
+      <div class="form-group mx-sm-3 mb-2">
+        <select id="inputState" formControlName="classId" class="form-control">
+          <option *ngFor="let each of classes;let i=index" [ngValue]="each.id">{{each.name}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">submit</button>
+    </form>
+  </div>
+  <br><br>
+  <div *ngIf="!listTeachers">
+    <h4>Notice:
+      <small>There are no teachers list currently</small>
+    </h4>
+  </div>
+  <div *ngIf="listTeachers">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>phoneNumber</th>
+        <th>phoneNumber</th>
+        <th>email</th>
+        <th>qualification</th>
+        <th>Assign Class</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let each of listTeachers;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{each.firstName}} {{each.middleName}} {{each.lastName}}</td>
+        <td>{{each.phoneNumber}}</td>
+        <td>{{each.phoneNumber2}}</td>
+        <td>{{each.email}}</td>
+        <td>{{each.qualification}}</td>
+        <td><button class="btn btn-warning" (click)="assign(i)">Assign</button></td>
+        <td *ngIf="each.statusId == 0">
+          <ui-switch (change)="activate(i, $event)"></ui-switch>
+        </td>
+        <td *ngIf="each.statusId == 1">
+          <ui-switch checked (change)="activate(i, $event)"></ui-switch>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

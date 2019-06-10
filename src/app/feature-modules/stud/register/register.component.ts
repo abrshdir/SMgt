@@ -3,7 +3,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {StudentsService} from '../../../api/services/students.service';
 import {ToasterService} from '../../../services/toaster.service';
-import { ModalComponent } from 'src/app/components/modal/modal.component';
+import {ModalComponent} from 'src/app/components/modal/modal.component';
 
 
 @Component({
@@ -56,13 +56,15 @@ export class RegisterComponent implements OnInit {
       studentId: '',
     });
   }
+
   openModal(title: string, message: string) {
     const initialState = {
-      title: title,
-      message: message,
+      title,
+      message,
     };
     this.bsModalService.show(ModalComponent, {initialState});
   }
+
   registerNow() {
     this.register.patchValue({status: this.statusNum});
     this.studentsService.registerStudents(this.register.value).subscribe(
@@ -70,8 +72,7 @@ export class RegisterComponent implements OnInit {
         if (result.status) {
           this.toasterService.opensuccessToaster(result.message, 'successfully inserted')
           this.bsModalRef.hide();
-        }
-        else{
+        } else {
           this.openModal('Failure', result.message);
         }
       }
