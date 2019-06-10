@@ -2,20 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TeachRoutingModule } from './teach-routing.module';
-import {SharedModule} from '../../shared/shared.module';
-import {DataTablesModule} from 'angular-datatables';
-import {BsDropdownModule} from 'ngx-bootstrap';
+import { SharedModule } from '../../shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
+import { BsDropdownModule } from 'ngx-bootstrap';
 import { ListComponent } from './list/list.component';
 import { TeachHomeComponent } from './teach-home/teach-home.component';
+import { RegTeachComponent } from './reg-teach/reg-teach.component';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 @NgModule({
-  declarations: [ListComponent, TeachHomeComponent],
+  declarations: [ListComponent, TeachHomeComponent, RegTeachComponent],
   imports: [
     CommonModule,
     TeachRoutingModule,
     SharedModule,
     DataTablesModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    UiSwitchModule
   ]
 })
 export class TeachModule { }

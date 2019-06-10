@@ -4,7 +4,7 @@ export interface AssesmentRequestDTO {
   name?: string;
   programId?: number;
   teacherId?: number;
-  classId?: number;
+  classId?: Array<number>;
   subjectId?: number;
   givenDate?: string;
   submittedDate?: string;

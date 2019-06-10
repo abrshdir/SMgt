@@ -1,0 +1,15 @@
+<div class="footer">
+  <div class="foo">
+    <div class="btn-group" dropdown [dropup]="isDropup">
+      <button id="button-dropup" dropdownToggle type="button" class="btn btn-light dropdown-toggle bbt"
+        aria-controls="dropdown-dropup">
+        <i class="fa fa-user"></i>
+      </button>
+      <h6>User</h6>
+      <ul id="dropdown-dropup" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-dropup">
+        <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

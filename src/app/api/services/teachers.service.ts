@@ -7,20 +7,20 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
+import { TeacherListResponseDTO } from '../models/teacher-list-response-dto';
 import { ResponseDTO } from '../models/response-dto';
-import { TeacherRequestDTO } from '../models/teacher-request-dto';
 import { TeacherAssignmentDTO } from '../models/teacher-assignment-dto';
 import { TeacherAssignmentResponseDTO } from '../models/teacher-assignment-response-dto';
-import { TeacherListResponseDTO } from '../models/teacher-list-response-dto';
+import { TeacherRequestDTO } from '../models/teacher-request-dto';
 @Injectable({
   providedIn: 'root',
 })
 class TeachersService extends __BaseService {
-  static readonly registerStudentsPath = '/teacher/register';
+  static readonly listByClassPath = '/teacher/listByClass';
   static readonly assignTeachersPath = '/teacher/assignClassAndSubject';
   static readonly teacherAssignmentListPath = '/teacher/teacherAssignmentList';
+  static readonly registerStudentsPath = '/teacher/register';
   static readonly listregisteredTeachersPath = '/teacher/list';
-  static readonly listByClassPath = '/teacher/listByClass';
 
   constructor(
     config: __Configuration,
@@ -30,18 +30,18 @@ class TeachersService extends __BaseService {
   }
 
   /**
-   * Register Teachers
-   * @param body undefined
+   * Lists already Registered Teachers by class
+   * @param classId undefined
    * @return successful operation
    */
-  registerStudentsResponse(body?: TeacherRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
+  listByClassResponse(classId?: number): __Observable<__StrictHttpResponse<Array<TeacherListResponseDTO>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = body;
+    if (classId != null) __params = __params.set('classId', classId.toString());
     let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/teacher/register`,
+      'GET',
+      this.rootUrl + `/teacher/listByClass`,
       __body,
       {
         headers: __headers,
@@ -52,18 +52,18 @@ class TeachersService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<ResponseDTO>;
+        return _r as __StrictHttpResponse<Array<TeacherListResponseDTO>>;
       })
     );
   }
   /**
-   * Register Teachers
-   * @param body undefined
+   * Lists already Registered Teachers by class
+   * @param classId undefined
    * @return successful operation
    */
-  registerStudents(body?: TeacherRequestDTO): __Observable<ResponseDTO> {
-    return this.registerStudentsResponse(body).pipe(
-      __map(_r => _r.body as ResponseDTO)
+  listByClass(classId?: number): __Observable<Array<TeacherListResponseDTO>> {
+    return this.listByClassResponse(classId).pipe(
+      __map(_r => _r.body as Array<TeacherListResponseDTO>)
     );
   }
 
@@ -155,6 +155,44 @@ class TeachersService extends __BaseService {
   }
 
   /**
+   * Register Teachers
+   * @param body undefined
+   * @return successful operation
+   */
+  registerStudentsResponse(body?: TeacherRequestDTO): __Observable<__StrictHttpResponse<ResponseDTO>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/teacher/register`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<ResponseDTO>;
+      })
+    );
+  }
+  /**
+   * Register Teachers
+   * @param body undefined
+   * @return successful operation
+   */
+  registerStudents(body?: TeacherRequestDTO): __Observable<ResponseDTO> {
+    return this.registerStudentsResponse(body).pipe(
+      __map(_r => _r.body as ResponseDTO)
+    );
+  }
+
+  /**
    * Lists already Registered Teachers
    * @param params The `TeachersService.ListregisteredTeachersParams` containing the following parameters:
    *
@@ -199,44 +237,6 @@ class TeachersService extends __BaseService {
    */
   listregisteredTeachers(params: TeachersService.ListregisteredTeachersParams): __Observable<Array<TeacherListResponseDTO>> {
     return this.listregisteredTeachersResponse(params).pipe(
-      __map(_r => _r.body as Array<TeacherListResponseDTO>)
-    );
-  }
-
-  /**
-   * Lists already Registered Teachers by class
-   * @param classId undefined
-   * @return successful operation
-   */
-  listByClassResponse(classId?: number): __Observable<__StrictHttpResponse<Array<TeacherListResponseDTO>>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    if (classId != null) __params = __params.set('classId', classId.toString());
-    let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/teacher/listByClass`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<Array<TeacherListResponseDTO>>;
-      })
-    );
-  }
-  /**
-   * Lists already Registered Teachers by class
-   * @param classId undefined
-   * @return successful operation
-   */
-  listByClass(classId?: number): __Observable<Array<TeacherListResponseDTO>> {
-    return this.listByClassResponse(classId).pipe(
       __map(_r => _r.body as Array<TeacherListResponseDTO>)
     );
   }

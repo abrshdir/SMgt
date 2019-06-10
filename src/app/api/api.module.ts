@@ -8,6 +8,7 @@ import { ClassesService } from './services/classes.service';
 import { ContactsService } from './services/contacts.service';
 import { GradesService } from './services/grades.service';
 import { ProgramsService } from './services/programs.service';
+import { SchoolFeeService } from './services/school-fee.service';
 import { SectionsService } from './services/sections.service';
 import { StatusesService } from './services/statuses.service';
 import { StudentsService } from './services/students.service';
@@ -32,6 +33,7 @@ import { TeachersService } from './services/teachers.service';
     ContactsService,
     GradesService,
     ProgramsService,
+    SchoolFeeService,
     SectionsService,
     StatusesService,
     StudentsService,

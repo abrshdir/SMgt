@@ -1,17 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {StudentsService} from '../../../api/services/students.service';
-import {ToasterService} from '../../../services/toaster.service';
+import { Component, OnInit } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToasterService } from 'src/app/services/toaster.service';
+import { TeachersService } from 'src/app/api/services';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 
-
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.sass']
+  selector: 'app-reg-teach',
+  templateUrl: './reg-teach.component.html',
+  styleUrls: ['./reg-teach.component.sass']
 })
-export class RegisterComponent implements OnInit {
+export class RegTeachComponent implements OnInit {
 
   register: FormGroup;
   statusNum: number;
@@ -20,14 +19,11 @@ export class RegisterComponent implements OnInit {
     private bsModalService: BsModalService,
     public bsModalRef: BsModalRef,
     private formBuilder: FormBuilder,
-    private studentsService: StudentsService,
-    private toasterService: ToasterService
-  ) {
-  }
+    private toasterService: ToasterService,
+    private teachersService: TeachersService,
+  ) { }
 
-  get status() {
-    return this.register.get('status');
-  }
+
 
   get firstName() {
     return this.register.get('firstName');
@@ -41,19 +37,38 @@ export class RegisterComponent implements OnInit {
     return this.register.get('lastName');
   }
 
-  get studentId() {
-    return this.register.get('studentId');
+  get phoneNumber() {
+    return this.register.get('phoneNumber');
+  }
+  get phoneNumber2() {
+    return this.register.get('phoneNumber2');
+  }
+  get email() {
+    return this.register.get('email');
   }
 
+  get qualification() {
+    return this.register.get('qualification');
+  }
+  get statusId() {
+    return this.register.get('statusId');
+  }
+  get statusName() {
+    return this.register.get('statusName');
+  }
+  
 
   ngOnInit() {
-
     this.register = this.formBuilder.group({
-      status: '',
       firstName: '',
       middleName: '',
       lastName: '',
-      studentId: '',
+      phoneNumber: '',
+      phoneNumber2: '',
+      email: '',
+      qualification: '',
+      statusId: '',
+      statusName: ''
     });
   }
   openModal(title: string, message: string) {
@@ -65,7 +80,7 @@ export class RegisterComponent implements OnInit {
   }
   registerNow() {
     this.register.patchValue({status: this.statusNum});
-    this.studentsService.registerStudents(this.register.value).subscribe(
+    this.teachersService.registerStudents(this.register.value).subscribe(
       result => {
         if (result.status) {
           this.toasterService.opensuccessToaster(result.message, 'successfully inserted')

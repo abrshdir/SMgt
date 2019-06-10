@@ -16,6 +16,7 @@ import { ClassListResponseDTO } from '../models/class-list-response-dto';
 class ClassesService extends __BaseService {
   static readonly registerClassPath = '/classes/add';
   static readonly classesListPath = '/classes/list';
+  static readonly classesListByTeacherIdPath = '/classes/listByTeacherId';
 
   constructor(
     config: __Configuration,
@@ -110,6 +111,60 @@ class ClassesService extends __BaseService {
       __map(_r => _r.body as Array<ClassListResponseDTO>)
     );
   }
+
+  /**
+   * Lists already registered Grades
+   * @param params The `ClassesService.ClassesListByTeacherIdParams` containing the following parameters:
+   *
+   * - `teacherId`:
+   *
+   * - `startPosition`:
+   *
+   * - `maxResult`:
+   *
+   * @return successful operation
+   */
+  classesListByTeacherIdResponse(params: ClassesService.ClassesListByTeacherIdParams): __Observable<__StrictHttpResponse<Array<ClassListResponseDTO>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    if (params.teacherId != null) __params = __params.set('teacherId', params.teacherId.toString());
+    if (params.startPosition != null) __params = __params.set('startPosition', params.startPosition.toString());
+    if (params.maxResult != null) __params = __params.set('maxResult', params.maxResult.toString());
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/classes/listByTeacherId`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<ClassListResponseDTO>>;
+      })
+    );
+  }
+  /**
+   * Lists already registered Grades
+   * @param params The `ClassesService.ClassesListByTeacherIdParams` containing the following parameters:
+   *
+   * - `teacherId`:
+   *
+   * - `startPosition`:
+   *
+   * - `maxResult`:
+   *
+   * @return successful operation
+   */
+  classesListByTeacherId(params: ClassesService.ClassesListByTeacherIdParams): __Observable<Array<ClassListResponseDTO>> {
+    return this.classesListByTeacherIdResponse(params).pipe(
+      __map(_r => _r.body as Array<ClassListResponseDTO>)
+    );
+  }
 }
 
 module ClassesService {
@@ -118,6 +173,15 @@ module ClassesService {
    * Parameters for classesList
    */
   export interface ClassesListParams {
+    startPosition?: number;
+    maxResult?: number;
+  }
+
+  /**
+   * Parameters for classesListByTeacherId
+   */
+  export interface ClassesListByTeacherIdParams {
+    teacherId?: number;
     startPosition?: number;
     maxResult?: number;
   }

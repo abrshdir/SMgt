@@ -1,0 +1,115 @@
+<div class="modalme">
+  <div class="modal-header">
+    <h5>Register</h5>
+  </div>
+  <div class="modal-body">
+
+    <form (ngSubmit)="registerNow()" [formGroup]="register">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="firstName">First Name</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="firstName" id="firstName" placeholder="first name" type="text">
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">-->
+            <small *ngIf="register.hasError('required',['firstName'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="lastName">Last Name</label>
+        <div class="col-sm-9">
+          <input class="form-control " formControlName="lastName" id="lastName" placeholder="last name" type="text">
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">-->
+            <small *ngIf="register.hasError('required',['lastName'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="middleName">Middle Name</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="middleName" id="middleName" placeholder="middle name"
+                 type="text">
+          <div *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)">-->
+            <small *ngIf="register.hasError('required',['middleName'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="phoneNumber">Phone Number 1</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="ID" type="text">
+          <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">-->
+            <small *ngIf="register.hasError('required',['phoneNumber'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="phoneNumber2">Phone Number 2</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="phoneNumber2" id="phoneNumber2" placeholder="ID" type="text">
+          <div *ngIf="phoneNumber2.invalid && (phoneNumber2.dirty || phoneNumber2.touched)">-->
+            <small *ngIf="register.hasError('required',['phoneNumber2'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="email">Email</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="email" id="email" placeholder="ID" type="text">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">-->
+            <small *ngIf="register.hasError('required',['email'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light" for="qualification">Qualification</label>
+        <div class="col-sm-9">
+          <input class="form-control" formControlName="qualification" id="qualification" placeholder="ID" type="text">
+          <div *ngIf="qualification.invalid && (qualification.dirty || qualification.touched)">-->
+            <small *ngIf="register.hasError('required',['qualification'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <td>
+        <label>Activate</label>
+        <ui-switch (change)="activate($event)" checkedLabel="Activated"
+                   class="pl-5"
+                   id="status" size="large" uncheckedLabel="Deactivated"></ui-switch>
+      </td>
+      <br>
+      <div class="submit">
+        <button class="btn btn-success float-right" type="submit">Register</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+

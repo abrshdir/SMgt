@@ -1,21 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {StudHomeComponent} from "../stud/stud-home/stud-home.component";
-import {StudListComponent} from "../stud/stud-list/stud-list.component";
-import {ListByclassComponent} from "../stud/list-byclass/list-byclass.component";
-import {AssignClassComponent} from "../stud/assign-class/assign-class.component";
-import {RegisterComponent} from "../stud/register/register.component";
+import { ListComponent } from './list/list.component';
+import { RegTeachComponent } from './reg-teach/reg-teach.component';
+import { TeachHomeComponent } from './teach-home/teach-home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: StudHomeComponent,
+    component: TeachHomeComponent,
     children: [
-      {path: 'studList', component: StudListComponent},
-      {path: 'listByClass', component: ListByclassComponent},
-      {path: 'assignClass', component: AssignClassComponent},
-      {path: 'register', component: RegisterComponent},
-      {path: '', redirectTo: 'studList', pathMatch: 'full'}
+      {path: 'teachList', component: ListComponent},
+      {path: 'regTeach', component: RegTeachComponent},
+      {path: '', redirectTo: 'teachList', pathMatch: 'full'}
     ]
   }
 ];

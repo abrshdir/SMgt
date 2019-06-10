@@ -16,8 +16,8 @@ import { ContactRequestDTO } from '../models/contact-request-dto';
 class ContactsService extends __BaseService {
   static readonly AssociateContactsPath = '/contacts/associate';
   static readonly listregisteredContactsPath = '/contacts/list';
-  static readonly listByStudentPath = '/contacts/listByStudent';
   static readonly registerContactsPath = '/contacts/register';
+  static readonly listByStudentPath = '/contacts/listByStudent';
 
   constructor(
     config: __Configuration,
@@ -130,44 +130,6 @@ class ContactsService extends __BaseService {
   }
 
   /**
-   * Lists already Registered Contacts by student id
-   * @param studentId undefined
-   * @return successful operation
-   */
-  listByStudentResponse(studentId?: number): __Observable<__StrictHttpResponse<Array<ContactListResponseDTO>>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    if (studentId != null) __params = __params.set('studentId', studentId.toString());
-    let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/contacts/listByStudent`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<Array<ContactListResponseDTO>>;
-      })
-    );
-  }
-  /**
-   * Lists already Registered Contacts by student id
-   * @param studentId undefined
-   * @return successful operation
-   */
-  listByStudent(studentId?: number): __Observable<Array<ContactListResponseDTO>> {
-    return this.listByStudentResponse(studentId).pipe(
-      __map(_r => _r.body as Array<ContactListResponseDTO>)
-    );
-  }
-
-  /**
    * Register Contacts
    * @param body undefined
    * @return successful operation
@@ -202,6 +164,44 @@ class ContactsService extends __BaseService {
   registerContacts(body?: ContactRequestDTO): __Observable<ResponseDTO> {
     return this.registerContactsResponse(body).pipe(
       __map(_r => _r.body as ResponseDTO)
+    );
+  }
+
+  /**
+   * Lists already Registered Contacts by student id
+   * @param studentId undefined
+   * @return successful operation
+   */
+  listByStudentResponse(studentId?: number): __Observable<__StrictHttpResponse<Array<ContactListResponseDTO>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    if (studentId != null) __params = __params.set('studentId', studentId.toString());
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/contacts/listByStudent`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<ContactListResponseDTO>>;
+      })
+    );
+  }
+  /**
+   * Lists already Registered Contacts by student id
+   * @param studentId undefined
+   * @return successful operation
+   */
+  listByStudent(studentId?: number): __Observable<Array<ContactListResponseDTO>> {
+    return this.listByStudentResponse(studentId).pipe(
+      __map(_r => _r.body as Array<ContactListResponseDTO>)
     );
   }
 }

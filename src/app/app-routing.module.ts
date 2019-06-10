@@ -16,6 +16,12 @@ const routes: Routes = [
    data: { role: 'ALL' } */
   },
   {
+    path: 'teach',
+    loadChildren: 'src/app/feature-modules/teachers/teach.module#TeachModule',
+    /*  canLoad: [AuthGuard],
+     data: { role: 'ALL' } */
+    },
+  {
     path: '',
     redirectTo: 'stud',
     pathMatch: 'full'

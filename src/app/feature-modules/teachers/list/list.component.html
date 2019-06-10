@@ -1,3 +1,40 @@
-<p>
-  list works!
-</p>
+<div class="header-con">
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Teachers List</h6>
+      </div>
+      <div class="co">
+        <button class="btn btn-success" (click)="regTeach()">Register Teachers</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="list-con">
+  <div *ngIf="!listTeachers">
+    <h4>Notice: <small>There are no students list currently</small></h4>
+  </div>
+  <div *ngIf="listTeachers">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">student Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let each of listTeachers;let i=index">
+          <td>{{each.studentId}}</td>
+          <td>{{each.firstName}} {{each.lastName}} {{each.middleName}}</td>
+          <td *ngIf="each.statusId == 0">
+            <ui-switch (change)="activate(i, $event)"></ui-switch>
+          </td>
+          <td *ngIf="each.statusId == 1">
+            <ui-switch checked (change)="activate(i, $event)"></ui-switch>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
