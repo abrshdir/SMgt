@@ -14,13 +14,13 @@
   <br>
   <div class="border-light">
     <form class="form-inline" [formGroup]="insertCId" (ngSubmit)="list()">
-      <h5>List teachers of Class</h5>
-      <div class="form-group mx-sm-3 mb-2">
+      <h5 class="mx-sm-4">List teachers of Class</h5>
+      <div class="form-group mx-sm pr-2">
         <select id="inputState" formControlName="classId" class="form-control">
           <option *ngFor="let each of classes;let i=index" [ngValue]="each.id">{{each.name}}</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary mb-2">submit</button>
+      <button type="submit" class="btn btn-success pl-4">submit</button>
     </form>
   </div>
   <br><br>

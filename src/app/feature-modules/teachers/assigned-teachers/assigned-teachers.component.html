@@ -1,0 +1,39 @@
+<div class="header-con">
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Assigned Teachers List</h6>
+      </div>
+      <div class="co">
+        <!--<button class="btn btn-success" (click)="regTeach()">Register Teachers</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="list-con">
+  <div *ngIf="!listTeachers">
+    <h4>Notice: <small>There are no assigned teachers list currently</small></h4>
+  </div>
+  <div *ngIf="listTeachers">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Class Name</th>
+        <th scope="col">Year</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let each of listTeachers;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{each.teacherName}}</td>
+        <td>{{each.subjectName}}</td>
+        <td>{{each.className}}</td>
+        <td>{{each.year}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
