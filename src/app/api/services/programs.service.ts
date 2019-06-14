@@ -6,7 +6,6 @@ import { ApiConfiguration as __Configuration } from '../api-configuration';
 import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-response';
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
-
 import { ResponseDTO } from '../models/response-dto';
 import { ProgramRequestDTO } from '../models/program-request-dto';
 import { ProgramsResponseDTO } from '../models/programs-response-dto';

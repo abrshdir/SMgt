@@ -1,0 +1,35 @@
+<div class="header-con">
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Subjects List</h6>
+      </div>
+      <div class="co">
+        <button class="btn btn-success" (click)="addSubjects()">Add Subjects</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="list-con">
+  <div *ngIf="!subjectsList">
+    <h4>Notice: <small>There are no subjects list currently</small></h4>
+  </div>
+  <div *ngIf="subjectsList">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let each of subjectsList;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{each.name}}</td>
+        <td>{{each.description}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

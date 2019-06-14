@@ -1,0 +1,40 @@
+<div class="header-con">
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Programs List</h6>
+      </div>
+      <div class="co">
+        <button class="btn btn-success" (click)="addPrograms()">Register Students</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="list-con">
+  <div *ngIf="!proList">
+    <h4>Notice: <small>There are no students list currently</small></h4>
+  </div>
+  <div *ngIf="proList">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">program Type Name</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let each of proList;let i=index">
+        <td>{{each.programTypeName}}</td>
+        <td>{{each.name}}</td>
+        <td>{{each.descriptioin}}</td>
+        <td>{{each.startDate | date: 'medium' : 'ZZZZ'}}</td>
+        <td>{{each.endDate | date: 'medium' : 'ZZZZ'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

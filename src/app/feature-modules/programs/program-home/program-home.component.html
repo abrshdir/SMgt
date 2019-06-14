@@ -1,0 +1,20 @@
+<nav id="sidebar">
+  <app-sidebar></app-sidebar>
+  <div class="desc">
+    <div class="lis" routerLink="./programList" routerLinkActive="active">
+      <h6><i class="fa fa-list pr-2"></i>Programs List</h6>
+    </div>
+
+    <div class="lis" routerLink="/homepage" routerLinkActive="active">
+      <h6><i class="fa fa-arrow-left pr-2"></i>  Go to Homepage</h6>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</nav>
+<div id="content">
+  <div class="main-con">
+    <router-outlet></router-outlet>
+  </div>
+</div>

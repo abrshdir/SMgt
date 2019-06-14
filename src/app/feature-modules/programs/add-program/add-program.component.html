@@ -1,0 +1,69 @@
+<div class="modal-me">
+  <div class="modal-header">
+    <h5>Add Program</h5>
+  </div>
+  <div class="modal-body">
+
+    <form (ngSubmit)="registerNow()" [formGroup]="register">
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="name">Name</label>
+        <div class="col-sm-8">
+          <input class="form-control" formControlName="name" id="name" placeholder="first name" type="text">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)">-->
+            <small *ngIf="register.hasError('required',['name'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="descriptioin">Description</label>
+        <div class="col-sm-8">
+          <input class="form-control " formControlName="descriptioin" id="descriptioin" placeholder="last name" type="text">
+          <div *ngIf="descriptioin.invalid && (descriptioin.dirty || descriptioin.touched)">-->
+            <small *ngIf="register.hasError('required',['descriptioin'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="startDate">Start Date</label>
+        <div class="col-sm-8">
+          <input class="form-control" formControlName="startDate" id="startDate" placeholder="middle name"
+                 type="text">
+          <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)">-->
+            <small *ngIf="register.hasError('required',['startDate'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="endDate">End Date</label>
+        <div class="col-sm-8">
+          <input class="form-control" formControlName="endDate" id="endDate" placeholder="ID" type="text">
+          <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)">-->
+            <small *ngIf="register.hasError('required',['endDate'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <br>
+      <div class="submit">
+        <button class="btn btn-success float-right" type="submit">Insert</button>
+      </div>
+    </form>
+  </div>
+</div>
+

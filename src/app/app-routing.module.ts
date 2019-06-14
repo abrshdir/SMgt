@@ -22,6 +22,18 @@ const routes: Routes = [
      data: { role: 'ALL' } */
     },
   {
+    path: 'subjects',
+    loadChildren: 'src/app/feature-modules/subjects/subj-home.module#SubjHomeModule',
+    /*  canLoad: [AuthGuard],
+     data: { role: 'ALL' } */
+  },
+  {
+    path: 'programs',
+    loadChildren: 'src/app/feature-modules/programs/programs.module#ProgramsModule',
+    /*  canLoad: [AuthGuard],
+     data: { role: 'ALL' } */
+  },
+  {
     path: '',
     redirectTo: 'stud',
     pathMatch: 'full'
