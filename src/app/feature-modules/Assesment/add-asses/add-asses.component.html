@@ -1,76 +1,120 @@
 <div class="modal-me">
   <div class="modal-header">
-    <h5>Register</h5>
+    <h5>Add Assesment</h5>
   </div>
   <div class="modal-body">
 
     <form (ngSubmit)="registerNow()" [formGroup]="register">
+
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="firstName">First Name</label>
+        <label class="col-sm-4 col-form-label text-light" for="givenDate">Name</label>
         <div class="col-sm-8">
-          <input class="form-control" formControlName="firstName" id="firstName" placeholder="first name" type="text">
-          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">-->
-            <small *ngIf="register.hasError('required',['firstName'])" class="form-text text-muted"
-                   style="color : red !important;">this
+          <input class="form-control" formControlName="givenDate" id="givenDate" placeholder="middle givenDate"
+            type="text">
+          <div *ngIf="givenDate.invalid && (givenDate.dirty || givenDate.touched)">-->
+            <small *ngIf="register.hasError('required',['givenDate'])" class="form-text text-muted"
+              style="color : red !important;">this
               field is required
             </small>
           </div>
         </div>
       </div>
       <br>
+
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="lastName">Last Name</label>
+        <label class="col-sm-4 col-form-label text-light" for="lastName">Assesment Type</label>
         <div class="col-sm-8">
-          <input class="form-control " formControlName="lastName" id="lastName" placeholder="last name" type="text">
-          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">-->
-            <small *ngIf="register.hasError('required',['lastName'])" class="form-text text-muted"
-                   style="color : red !important;">this
+          <select id="inputState" formControlName="assesmentTypeId" class="form-control">
+            <option *ngFor="let each of assesTypeList;let i=index" [ngValue]="each.id">{{each.givenDate}}</option>
+          </select>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="lastName">Program</label>
+        <div class="col-sm-8">
+          <select id="inputState" formControlName="programId" class="form-control">
+            <option *ngFor="let each of proList;let i=index" [ngValue]="each.id">{{each.givenDate}}</option>
+          </select>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="lastName">Teacher</label>
+        <div class="col-sm-8">
+          <select id="inputState" formControlName="teacherId" class="form-control">
+            <option *ngFor="let each of proList;let i=index" [ngValue]="each.id">{{each.firstName}}</option>
+          </select>
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="lastName">Class</label>
+        <div class="col-sm-8">
+          <select id="inputState" formControlName="classId" class="form-control">
+            <option *ngFor="let each of classList;let i=index" [ngValue]="each.id">{{each.firstName}}</option>
+          </select>
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="lastName">Subject</label>
+        <div class="col-sm-8">
+          <select id="inputState" formControlName="subjectId" class="form-control">
+            <option *ngFor="let each of subjectsList;let i=index" [ngValue]="each.id">{{each.firstName}}</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="givenDate">Given Date</label>
+        <div class="col-sm-8">
+          <input class="form-control" formControlName="givenDate" id="givenDate" placeholder="given Date" type="date">
+          <div *ngIf="givenDate.invalid && (givenDate.dirty || givenDate.touched)">
+            <small *ngIf="register.hasError('required',['givenDate'])" class="form-text text-muted"
+              style="color : red !important;">this
               field is required
             </small>
           </div>
         </div>
       </div>
       <br>
+
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="middleName">Middle Name</label>
-        <div class="col-sm-8">
-          <input class="form-control" formControlName="middleName" id="middleName" placeholder="middle name"
-                 type="text">
-          <div *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)">-->
-            <small *ngIf="register.hasError('required',['middleName'])" class="form-text text-muted"
-                   style="color : red !important;">this
-              field is required
-            </small>
+          <label class="col-sm-4 col-form-label text-light" for="submittedDate">Submited Date</label>
+          <div class="col-sm-8">
+            <input class="form-control" formControlName="submittedDate" id="submittedDate" placeholder="submitted Date" type="date">
+            <div *ngIf="submittedDate.invalid && (submittedDate.dirty || submittedDate.touched)">
+              <small *ngIf="register.hasError('required',['submittedDate'])" class="form-text text-muted"
+                style="color : red !important;">this
+                field is required
+              </small>
+            </div>
           </div>
         </div>
-      </div>
-      <br>
-      <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="studentId">Student Id</label>
-        <div class="col-sm-8">
-          <input class="form-control" formControlName="studentId" id="studentId" placeholder="ID" type="text">
-          <div *ngIf="studentId.invalid && (studentId.dirty || studentId.touched)">-->
-            <small *ngIf="register.hasError('required',['studentId'])" class="form-text text-muted"
-                   style="color : red !important;">this
-              field is required
-            </small>
+        <br>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label text-light" for="weight">Weight</label>
+            <div class="col-sm-8">
+              <input class="form-control" formControlName="weight" id="weight" placeholder="weight" type="text">
+              <div *ngIf="weight.invalid && (weight.dirty || weight.touched)">
+                <small *ngIf="register.hasError('required',['weight'])" class="form-text text-muted"
+                  style="color : red !important;">this
+                  field is required
+                </small>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <br>
-      <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light">Activate</label>
-        <div class="col-sm-8">
-          <ui-switch (change)="activate($event)" checkedLabel="Activated"
-                     class="pl-5"
-                     id="status" size="large" uncheckedLabel="Deactivated"></ui-switch>
-        </div>
-      </div>
-      <br>
+          <br>
+
       <div class="submit">
         <button class="btn btn-success float-right" type="submit">Register</button>
       </div>
     </form>
   </div>
 </div>
-

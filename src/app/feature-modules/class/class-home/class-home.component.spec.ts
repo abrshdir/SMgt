@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssesTypeListComponent } from './asses-type-list.component';
+import { ClassHomeComponent } from './class-home.component';
 
-describe('AssesTypeListComponent', () => {
-  let component: AssesTypeListComponent;
-  let fixture: ComponentFixture<AssesTypeListComponent>;
+describe('ClassHomeComponent', () => {
+  let component: ClassHomeComponent;
+  let fixture: ComponentFixture<ClassHomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssesTypeListComponent ]
+      declarations: [ ClassHomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AssesTypeListComponent);
+    fixture = TestBed.createComponent(ClassHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

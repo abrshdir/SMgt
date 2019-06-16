@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AssesmentsService } from 'src/app/api/services';
+import { AssesmentsService, ProgramsService, TeachersService, SubjectsService, ClassesService } from 'src/app/api/services';
 import { ToasterService } from 'src/app/services/toaster.service';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { DefaultListResponseDTO, ProgramsResponseDTO, TeacherListResponseDTO, ClassListResponseDTO } from 'src/app/api/models';
 
 @Component({
   selector: 'app-add-asses',
@@ -13,6 +14,11 @@ import { ModalComponent } from 'src/app/components/modal/modal.component';
 export class AddAssesComponent implements OnInit {
 
   register: FormGroup;
+  assesTypeList: DefaultListResponseDTO[];
+  proList: ProgramsResponseDTO[];
+  listTeachers: TeacherListResponseDTO[];
+  subjectsList: DefaultListResponseDTO[];
+  classList: ClassListResponseDTO[];
   
   get name() {
     return this.register.get('name');
@@ -54,10 +60,21 @@ export class AddAssesComponent implements OnInit {
     public bsModalRef: BsModalRef,
     private formBuilder: FormBuilder,
     private assesmentsService: AssesmentsService,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private programsService: ProgramsService,
+    private teachersService: TeachersService,
+    private subjectsService: SubjectsService,
+    private classesService: ClassesService,
   ) { }
 
   ngOnInit() {
+    this.assesment();
+    this.teachers();
+    this.program();
+    this.class();
+    this.subject();
+    this.class();
+
     this.register = this.formBuilder.group({
       assesmentTypeId: '',
       name: '',
@@ -69,6 +86,66 @@ export class AddAssesComponent implements OnInit {
       submittedDate: '',
       weight: ''
     });
+  }
+
+  assesment(){
+    const params: AssesmentsService.ListAssesmentTypesParams= {
+      startPosition: null,
+      maxResult: null
+    }
+    this.assesmentsService.listAssesmentTypes(params).subscribe(
+      result => {
+        this.assesTypeList = result;
+      }
+    );
+  }
+
+  teachers(){
+    const paramsss: TeachersService.ListregisteredTeachersParams={
+      startPosition: null,
+      maxResult: null
+    }
+    this.teachersService.listregisteredTeachers(paramsss).subscribe(
+      result => {
+        this.listTeachers = result
+      }
+    );
+  }
+
+  class(){
+      const params: ClassesService.ClassesListParams= {
+        startPosition: null,
+        maxResult: null
+      }
+      this.classesService.classesList(params).subscribe(
+        result => {
+          this.classList = result;
+        }
+      );
+    }
+
+  subject(){
+    const params: SubjectsService.ListGradesParams = {
+      startPosition: null,
+      maxResult: null
+    };
+    this.subjectsService.listGrades(params).subscribe(
+      result => {
+        this.subjectsList = result;
+      }
+    );
+  }
+
+  program(){
+    const paramss: ProgramsService.ListProgramsParams = {
+      startPosition: null,
+      maxResult: null
+    };
+    this.programsService.listPrograms(paramss).subscribe(
+      result => {
+        this.proList = result;
+      }
+    );
   }
 
   openModal(title: string, message: string) {

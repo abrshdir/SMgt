@@ -1,3 +1,35 @@
-<p>
-  asses-type-list works!
-</p>
+<div class="header-con">
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Assesment Type List</h6>
+      </div>
+      <div class="co">
+        <button class="btn btn-success" (click)="registerStu()">Add Assesment Type</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="list-con">
+  <div *ngIf="!assesTypeList">
+    <h4>Notice: <small>There are no assesment type list currently</small></h4>
+  </div>
+  <div *ngIf="assesTypeList">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let each of assesTypeList;let i=index">
+          <td>{{i+1}}</td>
+          <td>{{each.name}}</td>
+          <td>{{each.description}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

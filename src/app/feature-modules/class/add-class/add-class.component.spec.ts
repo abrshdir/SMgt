@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddAssesTypeComponent } from './add-asses-type.component';
+import { AddClassComponent } from './add-class.component';
 
-describe('AddAssesTypeComponent', () => {
-  let component: AddAssesTypeComponent;
-  let fixture: ComponentFixture<AddAssesTypeComponent>;
+describe('AddClassComponent', () => {
+  let component: AddClassComponent;
+  let fixture: ComponentFixture<AddClassComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddAssesTypeComponent ]
+      declarations: [ AddClassComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddAssesTypeComponent);
+    fixture = TestBed.createComponent(AddClassComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
