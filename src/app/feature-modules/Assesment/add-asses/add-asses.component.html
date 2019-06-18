@@ -7,9 +7,9 @@
     <form (ngSubmit)="registerNow()" [formGroup]="register">
 
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="givenDate">Name</label>
+        <label class="col-sm-4 col-form-label text-light" for="name">Name</label>
         <div class="col-sm-8">
-          <input class="form-control" formControlName="givenDate" id="givenDate" placeholder="middle givenDate"
+          <input class="form-control" formControlName="name" id="name" placeholder="Name"
             type="text">
           <div *ngIf="givenDate.invalid && (givenDate.dirty || givenDate.touched)">-->
             <small *ngIf="register.hasError('required',['givenDate'])" class="form-text text-muted"
@@ -22,50 +22,50 @@
       <br>
 
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="lastName">Assesment Type</label>
+        <label class="col-sm-4 col-form-label text-light" for="assesmentTypeId">Assesment Type</label>
         <div class="col-sm-8">
-          <select id="inputState" formControlName="assesmentTypeId" class="form-control">
-            <option *ngFor="let each of assesTypeList;let i=index" [ngValue]="each.id">{{each.givenDate}}</option>
+          <select id="assesmentTypeId" formControlName="assesmentTypeId" class="form-control">
+            <option *ngFor="let each of assesTypeList;let i=index" [ngValue]="each.id">{{each.name}}</option>
           </select>
         </div>
       </div>
 
       <br>
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="lastName">Program</label>
+        <label class="col-sm-4 col-form-label text-light" for="programId">Program</label>
         <div class="col-sm-8">
-          <select id="inputState" formControlName="programId" class="form-control">
-            <option *ngFor="let each of proList;let i=index" [ngValue]="each.id">{{each.givenDate}}</option>
+          <select id="programId" formControlName="programId" class="form-control">
+            <option *ngFor="let each of proList;let i=index" [ngValue]="each.id">{{each.name}}</option>
           </select>
         </div>
       </div>
 
       <br>
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="lastName">Teacher</label>
+        <label class="col-sm-4 col-form-label text-light" for="teacherId">Teacher</label>
         <div class="col-sm-8">
-          <select id="inputState" formControlName="teacherId" class="form-control">
-            <option *ngFor="let each of proList;let i=index" [ngValue]="each.id">{{each.firstName}}</option>
+          <select id="teacherId" formControlName="teacherId" class="form-control">
+            <option *ngFor="let each of listTeachers;let i=index" [ngValue]="each.id">{{each.firstName}}</option>
           </select>
         </div>
       </div>
       <br>
 
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="lastName">Class</label>
+        <label class="col-sm-4 col-form-label text-light" for="classId">Class</label>
         <div class="col-sm-8">
-          <select id="inputState" formControlName="classId" class="form-control">
-            <option *ngFor="let each of classList;let i=index" [ngValue]="each.id">{{each.firstName}}</option>
+          <select id="classId" formControlName="classId" class="form-control">
+            <option *ngFor="let each of classList;let i=index" [ngValue]="each.id">{{each.name}}</option>
           </select>
         </div>
       </div>
       <br>
 
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label text-light" for="lastName">Subject</label>
+        <label class="col-sm-4 col-form-label text-light" for="subjectId">Subject</label>
         <div class="col-sm-8">
-          <select id="inputState" formControlName="subjectId" class="form-control">
-            <option *ngFor="let each of subjectsList;let i=index" [ngValue]="each.id">{{each.firstName}}</option>
+          <select id="subjectId" formControlName="subjectId" class="form-control">
+            <option *ngFor="let each of subjectsList;let i=index" [ngValue]="each.id">{{each.name}}</option>
           </select>
         </div>
       </div>

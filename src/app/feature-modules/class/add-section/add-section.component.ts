@@ -2,16 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ToasterService} from '../../../services/toaster.service';
-import {ClassesService} from '../../../api/services/classes.service';
 import {ModalComponent} from '../../../components/modal/modal.component';
+import {SectionsService} from '../../../api/services/sections.service';
 
 @Component({
-  selector: 'app-add-class',
-  templateUrl: './add-class.component.html',
-  styleUrls: ['./add-class.component.sass']
+  selector: 'app-add-section',
+  templateUrl: './add-section.component.html',
+  styleUrls: ['./add-section.component.sass']
 })
-export class AddClassComponent implements OnInit {
-
+export class AddSectionComponent implements OnInit {
 
   register: FormGroup;
 
@@ -20,20 +19,8 @@ export class AddClassComponent implements OnInit {
     public bsModalRef: BsModalRef,
     private formBuilder: FormBuilder,
     private toasterService: ToasterService,
-    private classesService: ClassesService,
+    private sectionsService: SectionsService,
   ) {
-  }
-
-  get grade() {
-    return this.register.get('grade');
-  }
-
-  get section() {
-    return this.register.get('section');
-  }
-
-  get capacity() {
-    return this.register.get('capacity');
   }
 
   get name() {
@@ -45,10 +32,8 @@ export class AddClassComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.register = this.formBuilder.group({
-      grade: '',
-      section: '',
-      capacity: '',
       name: '',
       description: ''
     });
@@ -63,7 +48,7 @@ export class AddClassComponent implements OnInit {
   }
 
   registerNow() {
-    this.classesService.registerClass(this.register.value).subscribe(
+    this.sectionsService.registerStudents(this.register.value).subscribe(
       result => {
         if (result.status) {
           this.toasterService.opensuccessToaster(result.message, 'successfully inserted');
@@ -75,4 +60,6 @@ export class AddClassComponent implements OnInit {
       }
     );
   }
+
+
 }

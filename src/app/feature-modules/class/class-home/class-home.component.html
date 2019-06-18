@@ -1,3 +1,25 @@
-<p>
-  class-home works!
-</p>
+<nav id="sidebar">
+  <app-sidebar></app-sidebar>
+  <div class="desc">
+    <div class="lis" routerLink="./listClassByTeacher" routerLinkActive="active">
+      <h6><i class="fa fa-list pr-2"></i> List Class By Teacher</h6>
+    </div>
+    <div class="lis" routerLink="./listClass" routerLinkActive="active">
+      <h6><i class="fa fa-list pr-2"></i> List Class</h6>
+    </div>
+    <div class="lis" routerLink="./sectionList" routerLinkActive="active">
+      <h6><i class="fa fa-list pr-2"></i> Sections</h6>
+    </div>
+    <div class="lis" routerLink="/homepage" routerLinkActive="active">
+      <h6><i class="fa fa-arrow-left pr-2"></i>  Go to Homepage</h6>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</nav>
+<div id="content">
+  <div class="main-con">
+    <router-outlet></router-outlet>
+  </div>
+</div>

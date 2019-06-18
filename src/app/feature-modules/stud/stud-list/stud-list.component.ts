@@ -33,6 +33,11 @@ export class StudListComponent implements OnInit {
 
   registerStu() {
     this.modalService.show(RegisterComponent);
+    this.modalService.onHide.subscribe(
+      result => {
+        this.ngOnInit();
+      }
+    );
   }
 
 }

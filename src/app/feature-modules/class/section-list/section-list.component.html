@@ -2,39 +2,33 @@
   <div class="cont">
     <div class="ro">
       <div class="co">
-        <h6>Class List</h6>
+        <h6>Sections List</h6>
       </div>
       <div class="co">
-        <button class="btn btn-success" (click)="registerStu()">Add Class</button>
+        <button class="btn btn-success" (click)="registerStu()">Add Section</button>
       </div>
     </div>
   </div>
 </div>
 <div class="list-con">
-  <div *ngIf="!classList">
-    <h4>Notice: <small>There are no Class list currently</small></h4>
+  <div *ngIf="!sectionList">
+    <h4>Notice: <small>There are no Sections list currently</small></h4>
   </div>
-  <div *ngIf="classList">
+  <div *ngIf="sectionList">
     <table class="table">
       <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
-        <th scope="col">Grade Name</th>
-        <th scope="col">Section Name</th>
-        <th scope="col">Capacity</th>
-      </tr>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let each of classList;let i=index">
+      <tr *ngFor="let each of sectionList;let i=index">
         <td>{{i+1}}</td>
         <td>{{each.name}}</td>
         <td>{{each.description}}</td>
-        <td>{{each.gradeName}}</td>
-        <td>{{each.sectionName}}</td>
-        <td>{{each.capacity}}</td>
-      </tr>
+        </tr>
       </tbody>
     </table>
   </div>

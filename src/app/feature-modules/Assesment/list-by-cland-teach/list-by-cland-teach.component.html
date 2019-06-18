@@ -1,3 +1,47 @@
-<p>
-  list-by-cland-teach works!
-</p>
+<div class="header-con">
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Assesment List</h6>
+      </div>
+      <div class="co">
+        <button class="btn btn-success" (click)="registerStu()">Add Assesment</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="list-con">
+  <div *ngIf="!assesList">
+    <h4>Notice: <small>There are no assesment list currently</small></h4>
+  </div>
+  <div *ngIf="assesList">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Program</th>
+        <th scope="col">Assesment Type</th>
+        <th scope="col">Assesment</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Teacher</th>
+        <th scope="col">Class</th>
+        <th scope="col">Given Date</th>
+        <th scope="col">Submitted Date</th>
+        <th scope="col">Weight</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let each of assesList;let i=index">
+        <td>{{each.programName}}</td>
+        <td>{{each.assesmentTypeName}}</td>
+        <td>{{each.assesmentName}}</td>
+        <td>{{each.subjectName}}</td>
+        <td>{{each.teacherName}}</td>
+        <td>{{each.className}}</td>
+        <td>{{each.givenDate}}</td>
+        <td>{{each.submittedDate}}</td>
+        <td>{{each.weight}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -21,7 +21,7 @@ export class ListAssesmentComponent implements OnInit {
     const params: AssesmentsService.ListProgramsParams= {
       startPosition: null,
       maxResult: null
-    }
+    };
     this.assesmentsService.listPrograms(params).subscribe(
       result => {
         this.assesList = result;
@@ -31,6 +31,11 @@ export class ListAssesmentComponent implements OnInit {
 
   registerStu() {
     this.modalService.show(AddAssesComponent);
+    this.modalService.onHide.subscribe(
+      result => {
+        this.ngOnInit();
+      }
+    );
   }
 
 }

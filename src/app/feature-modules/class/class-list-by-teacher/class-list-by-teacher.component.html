@@ -1,3 +1,55 @@
-<p>
-  class-list-by-teacher works!
-</p>
+<div class="header-con">
+  <div class="cont">
+    <div class="ro">
+      <div class="co">
+        <h6>Class List</h6>
+      </div>
+      <div class="co">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="list-con">
+
+  <h5 class="text-light">Select Teacher to display all the class that exists</h5>
+  <br>
+  <div class="border-light">
+    <form class="form-inline" [formGroup]="register" (ngSubmit)="registerNow()">
+      <h5>List Class By Their Teacher</h5>
+      <div class="form-group mx-sm-3 mb-2">
+        <select id="inputState" formControlName="teacherId" class="form-control">
+          <option *ngFor="let each of listTeachers;let i=index" [ngValue]="each.id">{{each.firstName}} {{each.middleName}} {{each.lastName}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">submit</button>
+    </form>
+  </div>
+
+  <div *ngIf="!classList">
+    <h4>Notice: <small>There are no Class list currently</small></h4>
+  </div>
+  <div *ngIf="classList">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Grade Name</th>
+        <th scope="col">Section Name</th>
+        <th scope="col">Capacity</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let each of classList;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{each.name}}</td>
+        <td>{{each.description}}</td>
+        <td>{{each.gradeName}}</td>
+        <td>{{each.sectionName}}</td>
+        <td>{{each.capacity}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="modal-me">
+  <div class="modal-header">
+    <h5>Add Class</h5>
+  </div>
+  <div class="modal-body">
+
+    <form (ngSubmit)="registerNow()" [formGroup]="register">
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="name">Name</label>
+        <div class="col-sm-8">
+          <input class="form-control" formControlName="name" id="name" placeholder="name" type="text">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)">-->
+            <small *ngIf="register.hasError('required',['name'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label text-light" for="description">Description</label>
+        <div class="col-sm-8">
+          <input class="form-control " formControlName="description" id="description" placeholder="description" type="text">
+          <div *ngIf="description.invalid && (description.dirty || description.touched)">-->
+            <small *ngIf="register.hasError('required',['description'])" class="form-text text-muted"
+                   style="color : red !important;">this
+              field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="submit">
+        <button class="btn btn-success float-right" type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -31,6 +31,11 @@ export class AssesTypeListComponent implements OnInit {
 
   registerStu() {
     this.modalService.show(AddAssesTypeComponent);
+    this.modalService.onHide.subscribe(
+      result => {
+        this.ngOnInit();
+      }
+    );
   }
 
 

@@ -34,5 +34,10 @@ export class ProgramsListComponent implements OnInit {
 
   addPrograms() {
     this.modalService.show(AddProgramComponent);
+    this.modalService.onHide.subscribe(
+      result => {
+        this.ngOnInit();
+      }
+    );
   }
 }

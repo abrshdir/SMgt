@@ -14,12 +14,12 @@ export class AddAssesTypeComponent implements OnInit {
 
   register: FormGroup;
   
-  get givenDate() {
-    return this.register.get('givenDate');
+  get name() {
+    return this.register.get('name');
   }
 
-  get submittedDate() {
-    return this.register.get('submittedDate');
+  get description() {
+    return this.register.get('description');
   }
 
   constructor(
@@ -50,6 +50,7 @@ export class AddAssesTypeComponent implements OnInit {
         if (result.status) {
           this.toasterService.opensuccessToaster(result.message, 'successfully inserted')
           this.bsModalRef.hide();
+          this.ngOnInit();
         } else {
           this.openModal('Failure', result.message);
         }

@@ -30,5 +30,10 @@ export class ListComponent implements OnInit {
 
   regTeach(){
     this.modalService.show(RegTeachComponent);
+    this.modalService.onHide.subscribe(
+      result => {
+        this.ngOnInit();
+      }
+    );
   }
 }

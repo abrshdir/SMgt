@@ -34,6 +34,12 @@ const routes: Routes = [
      data: { role: 'ALL' } */
   },
   {
+    path: 'class',
+    loadChildren: 'src/app/feature-modules/class/class.module#ClassModule',
+    /*  canLoad: [AuthGuard],
+     data: { role: 'ALL' } */
+  },
+  {
     path: 'programs',
     loadChildren: 'src/app/feature-modules/programs/programs.module#ProgramsModule',
     /*  canLoad: [AuthGuard],

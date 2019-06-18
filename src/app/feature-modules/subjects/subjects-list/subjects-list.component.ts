@@ -32,6 +32,11 @@ export class SubjectsListComponent implements OnInit {
 
   addSubjects() {
     this.modalService.show(SubjectsAddComponent);
+    this.modalService.onHide.subscribe(
+      result => {
+        this.ngOnInit();
+      }
+    );
   }
 
 }

@@ -18,6 +18,7 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
+          <th scope="col">#</th>
           <th scope="col">student Id</th>
           <th scope="col">Name</th>
           <th scope="col">status</th>
@@ -25,6 +26,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let each of studList;let i=index">
+          <td>{{i+1}}</td>
           <td>{{each.studentId}}</td>
           <td>{{each.firstName}} {{each.lastName}} {{each.middleName}}</td>
           <td *ngIf="each.statusId == 0">

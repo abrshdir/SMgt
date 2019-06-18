@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AssesmentsService, ProgramsService, TeachersService, SubjectsService, ClassesService } from 'src/app/api/services';
-import { ToasterService } from 'src/app/services/toaster.service';
-import { ModalComponent } from 'src/app/components/modal/modal.component';
-import { DefaultListResponseDTO, ProgramsResponseDTO, TeacherListResponseDTO, ClassListResponseDTO } from 'src/app/api/models';
+import {Component, OnInit} from '@angular/core';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AssesmentsService, ProgramsService, TeachersService, SubjectsService, ClassesService} from 'src/app/api/services';
+import {ToasterService} from 'src/app/services/toaster.service';
+import {ModalComponent} from 'src/app/components/modal/modal.component';
+import {DefaultListResponseDTO, ProgramsResponseDTO, TeacherListResponseDTO, ClassListResponseDTO} from 'src/app/api/models';
 
 @Component({
   selector: 'app-add-asses',
@@ -19,7 +19,20 @@ export class AddAssesComponent implements OnInit {
   listTeachers: TeacherListResponseDTO[];
   subjectsList: DefaultListResponseDTO[];
   classList: ClassListResponseDTO[];
-  
+
+  constructor(
+    private bsModalService: BsModalService,
+    public bsModalRef: BsModalRef,
+    private formBuilder: FormBuilder,
+    private assesmentsService: AssesmentsService,
+    private toasterService: ToasterService,
+    private programsService: ProgramsService,
+    private teachersService: TeachersService,
+    private subjectsService: SubjectsService,
+    private classesService: ClassesService,
+  ) {
+  }
+
   get name() {
     return this.register.get('name');
   }
@@ -55,17 +68,6 @@ export class AddAssesComponent implements OnInit {
   get weight() {
     return this.register.get('weight');
   }
-  constructor(
-    private bsModalService: BsModalService,
-    public bsModalRef: BsModalRef,
-    private formBuilder: FormBuilder,
-    private assesmentsService: AssesmentsService,
-    private toasterService: ToasterService,
-    private programsService: ProgramsService,
-    private teachersService: TeachersService,
-    private subjectsService: SubjectsService,
-    private classesService: ClassesService,
-  ) { }
 
   ngOnInit() {
     this.assesment();
@@ -88,11 +90,11 @@ export class AddAssesComponent implements OnInit {
     });
   }
 
-  assesment(){
-    const params: AssesmentsService.ListAssesmentTypesParams= {
+  assesment() {
+    const params: AssesmentsService.ListAssesmentTypesParams = {
       startPosition: null,
       maxResult: null
-    }
+    };
     this.assesmentsService.listAssesmentTypes(params).subscribe(
       result => {
         this.assesTypeList = result;
@@ -100,31 +102,31 @@ export class AddAssesComponent implements OnInit {
     );
   }
 
-  teachers(){
-    const paramsss: TeachersService.ListregisteredTeachersParams={
+  teachers() {
+    const paramsss: TeachersService.ListregisteredTeachersParams = {
       startPosition: null,
       maxResult: null
-    }
+    };
     this.teachersService.listregisteredTeachers(paramsss).subscribe(
       result => {
-        this.listTeachers = result
+        this.listTeachers = result;
       }
     );
   }
 
-  class(){
-      const params: ClassesService.ClassesListParams= {
-        startPosition: null,
-        maxResult: null
+  class() {
+    const params: ClassesService.ClassesListParams = {
+      startPosition: null,
+      maxResult: null
+    };
+    this.classesService.classesList(params).subscribe(
+      result => {
+        this.classList = result;
       }
-      this.classesService.classesList(params).subscribe(
-        result => {
-          this.classList = result;
-        }
-      );
-    }
+    );
+  }
 
-  subject(){
+  subject() {
     const params: SubjectsService.ListGradesParams = {
       startPosition: null,
       maxResult: null
@@ -136,7 +138,7 @@ export class AddAssesComponent implements OnInit {
     );
   }
 
-  program(){
+  program() {
     const paramss: ProgramsService.ListProgramsParams = {
       startPosition: null,
       maxResult: null
@@ -160,7 +162,7 @@ export class AddAssesComponent implements OnInit {
     this.assesmentsService.registerAssesment(this.register.value).subscribe(
       result => {
         if (result.status) {
-          this.toasterService.opensuccessToaster(result.message, 'successfully inserted')
+          this.toasterService.opensuccessToaster(result.message, 'successfully inserted');
           this.bsModalRef.hide();
         } else {
           this.openModal('Failure', result.message);
@@ -168,6 +170,6 @@ export class AddAssesComponent implements OnInit {
       }
     );
   }
-  
+
 
 }
